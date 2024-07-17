@@ -502,6 +502,7 @@ extension TelemetryWrapper {
         case copyAddress = "copy-address"
         case reportSiteIssue = "report-site-issue"
         case findInPage = "find-in-page"
+        case viewSummary = "view-summary"
         case requestDesktopSite = "request-desktop-site"
         case requestMobileSite = "request-mobile-site"
         case pinToTopSites = "pin-to-top-sites"

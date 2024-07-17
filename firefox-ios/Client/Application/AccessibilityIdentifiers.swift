@@ -420,6 +420,10 @@ public struct AccessibilityIdentifiers {
         static let closeButton = "Upgrade.CloseButton"
         static let pageControl = "Upgrade.PageControl"
     }
+    
+    struct Summary {
+        static let viewController = "SummaryViewController.view"
+    }
 
     struct Settings {
         static let tableViewController = "AppSettingsTableViewController.tableView"

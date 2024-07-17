@@ -234,6 +234,9 @@ class MainMenuActionHelper: PhotonActionSheetProtocol,
 
             let findInPageAction = getFindInPageAction()
             append(to: &section, action: findInPageAction)
+            
+            let summarizeSection = getSummarizePageAction()
+            append(to: &section, action: summarizeSection)
 
             let desktopSiteAction = getRequestDesktopSiteAction()
             append(to: &section, action: desktopSiteAction)
@@ -351,6 +354,18 @@ class MainMenuActionHelper: PhotonActionSheetProtocol,
                                      iconString: StandardImageIdentifiers.Large.search) { _ in
             TelemetryWrapper.recordEvent(category: .action, method: .tap, object: .findInPage)
             self.delegate?.showFindInPage()
+        }.items
+    }
+    
+    private func getSummarizePageAction() -> PhotonRowActions {
+        return SingleActionViewModel(title: .AppMenu.AppMenuSummarize,
+                                     iconString: StandardImageIdentifiers.Large.cloud) { _ in
+            TelemetryWrapper.recordEvent(category: .action, method: .tap, object: .viewSummary)
+
+            // Wait to show settings in async dispatch since hamburger menu is still showing at that time
+            DispatchQueue.main.async {
+                self.navigationHandler?.showSummary()
+            }
         }.items
     }
 

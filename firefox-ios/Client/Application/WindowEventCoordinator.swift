@@ -20,6 +20,9 @@ enum WindowEvent {
 
     /// A window opened the settings menu.
     case settingsOpened
+    
+    /// A window opened the summary menu.
+    case summaryOpened
 
     /// Sync & sign-in, or sync settings, presented.
     case syncMenuOpened

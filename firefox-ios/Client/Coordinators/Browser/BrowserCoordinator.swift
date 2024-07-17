@@ -17,6 +17,7 @@ class BrowserCoordinator: BaseCoordinator,
                           LaunchCoordinatorDelegate,
                           BrowserDelegate,
                           SettingsCoordinatorDelegate,
+                          SummaryCoordinatorDelegate,
                           BrowserNavigationHandler,
                           LibraryCoordinatorDelegate,
                           EnhancedTrackingProtectionCoordinatorDelegate,
@@ -353,6 +354,27 @@ class BrowserCoordinator: BaseCoordinator,
         }
         present(navigationController)
     }
+    
+    private func handleSummary(onDismiss: (() -> Void)? = nil) {
+        guard !childCoordinators.contains(where: { $0 is SummaryCoordinator }) else {
+            return // route is handled with existing child coordinator
+        }
+        
+        windowManager.postWindowEvent(event: .summaryOpened, windowUUID: windowUUID)
+        let navigationController = ThemedNavigationController(windowUUID: windowUUID)
+        let summaryRouter = DefaultRouter(navigationController: navigationController)
+        let summaryCoordinator = SummaryCoordinator(router: summaryRouter, tabManager: tabManager)
+        summaryCoordinator.parentCoordinator = self
+        add(child: summaryCoordinator)
+        summaryCoordinator.start()
+
+        navigationController.onViewDismissed = { [weak self] in
+            self?.didFinishSummary(from: summaryCoordinator)
+            onDismiss?()
+        }
+        
+        present(navigationController)
+    }
 
     private func showLibrary(with homepanelSection: Route.HomepanelSection) {
         windowManager.postWindowEvent(event: .libraryOpened, windowUUID: windowUUID)
@@ -390,6 +412,11 @@ class BrowserCoordinator: BaseCoordinator,
     }
 
     func didFinishSettings(from coordinator: SettingsCoordinator) {
+        router.dismiss(animated: true, completion: nil)
+        remove(child: coordinator)
+    }
+    
+    func didFinishSummary(from coordinator: SummaryCoordinator) {
         router.dismiss(animated: true, completion: nil)
         remove(child: coordinator)
     }
@@ -444,6 +471,12 @@ class BrowserCoordinator: BaseCoordinator,
     func show(settings: Route.SettingsSection, onDismiss: (() -> Void)? = nil) {
         presentWithModalDismissIfNeeded {
             self.handleSettings(with: settings, onDismiss: onDismiss)
+        }
+    }
+    
+    func showSummary() {
+        presentWithModalDismissIfNeeded {
+            self.handleSummary()
         }
     }
 
@@ -786,6 +819,12 @@ class BrowserCoordinator: BaseCoordinator,
             guard uuid != windowUUID else { return }
             performIfCoordinatorRootVCIsPresented(SettingsCoordinator.self) {
                 didFinishSettings(from: $0)
+            }
+        case .summaryOpened:
+            // Auto-close settings panel if it was opened in another iPad window. [FXIOS-8095]
+            guard uuid != windowUUID else { return }
+            performIfCoordinatorRootVCIsPresented(SummaryCoordinator.self) {
+                didFinishSummary(from: $0)
             }
         case .syncMenuOpened:
             guard uuid != windowUUID else { return }

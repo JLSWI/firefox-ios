@@ -451,6 +451,8 @@
 		4F514FD41ACD8F2C0022D7EA /* HistoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F514FD31ACD8F2C0022D7EA /* HistoryTests.swift */; };
 		4F97573B1AFA6F37006ECC24 /* readerContent.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F9757391AFA6F37006ECC24 /* readerContent.html */; };
 		4FB4AF7526E7E789005FDF91 /* HomeButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB4AF7426E7E789005FDF91 /* HomeButtonTests.swift */; };
+		56B4737F2C481AC800BF9F28 /* SummaryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4737E2C481AC700BF9F28 /* SummaryCoordinator.swift */; };
+		56B473822C481AEE00BF9F28 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B473802C481AED00BF9F28 /* SummaryViewController.swift */; };
 		580B0C4221748CFE00448DF8 /* DataManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580B0C4121748CFE00448DF8 /* DataManagementTests.swift */; };
 		59A68B280D62462B85CF57A4 /* HistoryPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A6825233896FC846499289 /* HistoryPanel.swift */; };
 		59A68D66379CFA85C4EAF00B /* TwoLineImageOverlayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A68B1F857A8638598A63A0 /* TwoLineImageOverlayCell.swift */; };
@@ -5782,6 +5784,8 @@
 		5628405387CF0EDAAB5F38A0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Intro.strings; sourceTree = "<group>"; };
 		56614B20AB6EB5F71E299E9A /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/FindInPage.strings; sourceTree = "<group>"; };
 		56A8447F94DAE003BFEA753A /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Menu.strings; sourceTree = "<group>"; };
+		56B4737E2C481AC700BF9F28 /* SummaryCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryCoordinator.swift; sourceTree = "<group>"; };
+		56B473802C481AED00BF9F28 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		56FE4E25A143314679D276CD /* af */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = af; path = af.lproj/Storage.strings; sourceTree = "<group>"; };
 		5701474D98CBB453BEF9044A /* kab */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kab; path = kab.lproj/FindInPage.strings; sourceTree = "<group>"; };
 		5710462DA936DC92C110E2B9 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Today.strings; sourceTree = "<group>"; };
@@ -9588,6 +9592,14 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
+		56B473812C481AED00BF9F28 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				56B473802C481AED00BF9F28 /* SummaryViewController.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
 		5A271ABB2860B0BD00471CE4 /* WebServer */ = {
 			isa = PBXGroup;
 			children = (
@@ -10230,6 +10242,7 @@
 				8AF10D8D29D773FC0086351D /* Scene */,
 				8A83B7452A264FA0002FF9AC /* SettingsCoordinator.swift */,
 				C23889DE2A4EFCE500429673 /* ShareExtensionCoordinator.swift */,
+				56B4737E2C481AC700BF9F28 /* SummaryCoordinator.swift */,
 				21FBB4032ADECEFF002D9AB7 /* TabTray */,
 				B236204E2B86C56F000B1DE7 /* AddressAutofillCoordinator.swift */,
 			);
@@ -12678,6 +12691,7 @@
 				F84B21F51A0910F600AAB793 /* Reader */,
 				2F44FC551A9E83E200FD20CC /* Settings */,
 				D3972BF01C22412B00035B87 /* Share */,
+				56B473812C481AED00BF9F28 /* Summary */,
 				C855728029AE7EF900AF32B0 /* SurveySurface */,
 				8AD40FB827BAD1DD00672675 /* TabContentsScripts */,
 				EB9A179720E69A7E00B12184 /* Theme */,
@@ -14429,6 +14443,7 @@
 				8C46E1B72B2209F000F56521 /* FakespotAdsEvent.swift in Sources */,
 				396E38F11EE0C8EC00CC180F /* FxAPushMessageHandler.swift in Sources */,
 				8A76B01629F6EB3900A82607 /* ScreenshotService.swift in Sources */,
+				56B4737F2C481AC800BF9F28 /* SummaryCoordinator.swift in Sources */,
 				8C1953322B85EAB500761B20 /* AutofillHeaderView.swift in Sources */,
 				8A7AE4442BAB510B0072DAEC /* LibraryPanelCoordinatorDelegate.swift in Sources */,
 				8C19532E2B85E7AE00761B20 /* SelfSizingHostingController.swift in Sources */,
@@ -15020,6 +15035,7 @@
 				8ADAE4222A33A113007BF926 /* SendAnonymousUsageDataSetting.swift in Sources */,
 				E170CA542B72C07A0082EFC5 /* FakespotActionFooterView.swift in Sources */,
 				C8EDDBF229DF1159003A4C07 /* URLScanner.swift in Sources */,
+				56B473822C481AEE00BF9F28 /* SummaryViewController.swift in Sources */,
 				EBB89504219398E500EB91A0 /* TrackingProtectionPageStats.swift in Sources */,
 				D31F95E91AC226CB005C9F3B /* ScreenshotHelper.swift in Sources */,
 				8A5D1CA62A30D6BD005AD35C /* NewTabPageSetting.swift in Sources */,

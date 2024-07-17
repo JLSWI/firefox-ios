@@ -14,6 +14,9 @@ protocol BrowserNavigationHandler: AnyObject, QRCodeNavigationHandler {
     /// - Parameter onDismiss: An optional closure that is executed when the settings page is dismissed. 
     /// This closure takes no parameters and returns no value.
     func show(settings: Route.SettingsSection, onDismiss: (() -> Void)?)
+    
+    /// Asks to show a summary page
+    func showSummary()
 
     /// Asks to show a enhancedTrackingProtection page, can be a general 
     /// enhancedTrackingProtection page or a child page

@@ -3801,6 +3801,11 @@ extension String {
             tableName: "Menu",
             value: "Settings",
             comment: "Label for the button, displayed in the menu, used to open the Settings menu.")
+        public static let AppMenuSummarize = MZLocalizedString(
+            key: "Menu.Summarize.Label",
+            tableName: nil,
+            value: "Summarize Page",
+            comment: "Label for the button, displayed in the menu, takes you to Summary screen when pressed.")
         public static let AppMenuCloseAllTabsTitleString = MZLocalizedString(
             key: "Menu.CloseAllTabsAction.Title",
             tableName: "Menu",
@@ -5459,6 +5464,15 @@ extension String {
         tableName: "FindInPage",
         value: nil,
         comment: "Done button in Find in Page Toolbar.")
+}
+
+// MARK: - Summary
+extension String {
+    public static let SummaryTitle = MZLocalizedString(
+        key: "Summary",
+        tableName: nil,
+        value: nil,
+        comment: "Accessibility label for summary view controller title bar.")
 }
 
 // MARK: - Reader Mode Bar
